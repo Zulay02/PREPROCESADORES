@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores de CSS en acción</title>
+    <!-- Tus apuntes de selectores -->
+    <link rel="stylesheet" href="selectores.css">
+    <!-- Estilos solo para ordenar esta página de ejemplos -->
+    <style>
+        body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            background: #fff;
+        }
+        h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+        section {
+            margin-top: 22px;
+            padding: 16px 18px;
+            border: 3px solid #111;
+            border-radius: 10px;
+        }
+        section h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .explica {
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: #f1f1f1;
+            color: #111;
+            border-radius: 6px;
+        }
+        .explica code,
+        .intro code {
+            font-weight: bold;
+        }
+        .intro {
+            color: #111;
+        }
+        section h2 {
+            font-size: 22px;
+        }
+        input {
+            display: block;
+            margin: 8px 0;
+            padding: 8px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selectores de CSS en acción</h1>
+    <div class="intro">Cada recuadro usa una regla de mis apuntes, <code>selectores.css</code>, y muestra el resultado.</div>
+
+    <section>
+        <h3>1. Selector de etiqueta</h3>
+        <p>Soy un párrafo: la regla <code>p</code> me pone azul.</p>
+        <div class="explica"><code>p { color: blue; }</code> se aplica a todos los párrafos.</div>
+    </section>
+
+    <section>
+        <h3>2. Selector anidado</h3>
+        <p>Párrafo azul con <span>un span adentro, que sale rojo</span>.</p>
+        <div><span>Este span está fuera de un párrafo, por eso es negro.</span></div>
+        <div class="explica"><code>p span</code> solo afecta a los span que están dentro de un párrafo.</div>
+    </section>
+
+    <section>
+        <h3>3. Selector de ID</h3>
+        <p id="verde">Tengo id="verde" y por eso soy verde.</p>
+        <div class="explica"><code>#verde</code> vale 100 puntos y le gana a <code>p</code>, que vale 1. El id no se puede repetir.</div>
+    </section>
+
+    <section>
+        <h3>4. Selector de clase</h3>
+        <p class="verde">Tengo class="verde".</p>
+        <p class="verde">Yo también: la clase se puede repetir.</p>
+        <div class="explica"><code>.verde</code> vale 10 puntos y le gana a <code>p</code>.</div>
+    </section>
+
+    <section>
+        <h3>5. Selector de hijos</h3>
+        <p><span>Soy hijo directo del párrafo: rojo.</span></p>
+        <div class="explica"><code>p &gt; span</code> se aplica a los span que están justo dentro del párrafo.</div>
+    </section>
+
+    <section>
+        <h3>6. Selector adyacente</h3>
+        <h2>Primer h2: negro</h2>
+        <h2>Segundo h2: rojo, porque va después de otro h2</h2>
+        <h2>Tercer h2: también rojo</h2>
+        <div class="explica"><code>h2 + h2</code> pinta el h2 que viene justo después de otro h2.</div>
+    </section>
+
+    <section>
+        <h3>7. Selector de atributos</h3>
+        <input type="number" placeholder="type=number: borde negro">
+        <input type="email" placeholder="type=email: borde rojo">
+        <div class="explica"><code>input[type='email']</code> solo afecta a los campos de correo.</div>
+    </section>
+
+    <section>
+        <h3>8. Especificidad: ¿quién gana?</h3>
+        <div><h2 class="especial"><span>h2.especial span → 12 puntos: rojo (le gana a .especial span, 11 puntos)</span></h2></div>
+        <div><h2 id="superespecial"><span>h2#superespecial span → 102 puntos: verde</span></h2></div>
+        <div class="explica">ID = 100, clase = 10, etiqueta = 1. Los puntos se suman y gana la regla con más puntos.</div>
+    </section>
+</body>
+</html>
